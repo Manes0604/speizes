@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
        .menu-box {
-    margin-top: 10px;
-    margin-bottom: 100px;
     padding: 20px;
+    margin-top: 100px; /* espacio para el header */
+    margin-bottom: 80px; /* espacio para el footer */
+    min-height: calc(100vh - 180px); /* asegura altura mínima */
+    overflow-y: auto; /* permite desplazarse si es muy largo */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 220px); /* espacio visible entre header y footer */
+    justify-content: space-between; /* distribuye el contenido para que el botón esté abajo */
 }
+
 .menu-header {
     margin-top: 100px; /* Ajusta según la altura del header */
     text-align: center;
@@ -176,7 +177,7 @@
         <div class="menu-box">
             <!-- Título y precio -->
             <div class="platillo-title">
-                <span>51Fifteen Burgers</span>
+                <span>51Fifteen Burger</span>
                 <span class="price">$19.99</span>
             </div>
 
