@@ -8,14 +8,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        .menu-box {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0px auto;
-        }
+       .menu-box {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 180px); /* espacio visible entre header y footer */
+}
+
 
         .platillo-title {
             display: flex;
@@ -33,27 +36,26 @@
 
         /* Contenedor Flip Card */
         .flip-card {
-            width: 100%;
-            max-width: 400px;  /* Limita el tamaño máximo de la tarjeta */
-            height: 400px; /* Controla la altura */
-            perspective: 1000px; /* Se agrega perspectiva */
-            margin-top: 20px;
-            margin: 0 auto; /* Centra la tarjeta */
-        }
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    perspective: 1000px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-        /* Estilos para el lado de la tarjeta */
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-        }
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
 
-        /* Girar la tarjeta */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
 
         /* Cara frontal */
         .flip-card-front, .flip-card-back {
@@ -181,19 +183,17 @@
             </div>
 
             <!-- Flip Card con la imagen y el texto -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <!-- Cara frontal con la imagen -->
-                    <div class="flip-card-front">
-                        <img src="assets/img/ceviche.png" alt="Platillo" class="platillo-image">
-                    </div>
-                    <!-- Cara posterior con el texto -->
-                    <div class="flip-card-back">
-                        Pargo rojo, camarones, cangrejo, pico de gallo, aguacate, jugo de limón.
+          <div class="flip-card" id="flipCard">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <img src="assets/img/ceviche.png" alt="Platillo" class="platillo-image">
+        </div>
+        <div class="flip-card-back">
+            Pargo rojo, camarones, cangrejo, pico de gallo, aguacate, jugo de limón.
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-            </div>
 
             <!-- Botón de agregar a la orden -->
             <button class="order-btn">Agregar a la Orden</button>
@@ -221,5 +221,14 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const flipCard = document.getElementById('flipCard');
+        flipCard.addEventListener('click', function () {
+            flipCard.classList.toggle('flipped');
+        });
+    });
+</script>
+
 </body>
 </html>
