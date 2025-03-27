@@ -229,6 +229,38 @@
         });
     });
 </script>
+ <script>document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const closeMenu = document.getElementById('close-menu');
+    const hamburgerIcon = document.querySelector('.menu-hamburger');
+    const overlay = document.getElementById('overlay');
+    const mainScreen = document.getElementById('main-screen');
+
+    // Abrir el menú al hacer clic en el ícono de hamburguesa
+    menuToggle.addEventListener('click', function (event) {
+        event.stopPropagation(); // Evita que el clic se propague
+        menu.classList.toggle('visible');
+        hamburgerIcon.classList.toggle('active');
+        mainScreen.classList.toggle('menu-visible'); // Activa el overlay
+    });
+
+    // Cerrar el menú al hacer clic en "Close"
+    closeMenu.addEventListener('click', function () {
+        menu.classList.remove('visible');
+        hamburgerIcon.classList.remove('active');
+        mainScreen.classList.remove('menu-visible'); // Desactiva el overlay
+    });
+
+    // Cerrar el menú al hacer clic fuera de él
+    document.addEventListener('click', function (event) {
+        if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+            menu.classList.remove('visible');
+            hamburgerIcon.classList.remove('active');
+            mainScreen.classList.remove('menu-visible'); // Desactiva el overlay
+        }
+    });
+});</script>
 
 </body>
 </html>
