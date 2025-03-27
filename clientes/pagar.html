@@ -325,6 +325,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Función para calcular el total con propina
+        function updateTotal() {
+            const baseTotal = 34; // Total base sin propina
+            const taxes = 3;
+            const fees = 4;
+            const service = 2;
+
+            let tipPercentage = 0;
+            const selectedTip = document.querySelector('input[name="tip"]:checked');
+            if (selectedTip) {
+                tipPercentage = parseFloat(selectedTip.value);
+            }
+
+            const tipAmount = (baseTotal * tipPercentage) / 100;
+            const total = baseTotal + taxes + fees + service + tipAmount;
+
+            document.getElementById('total').textContent = `$${total.toFixed(2)} USD`;
+        }
+
+        // Agregar evento de cambio en las opciones de propina
+        document.querySelectorAll('input[name="tip"]').forEach(radio => {
+            radio.addEventListener('change', updateTotal);
+        });
+
         function showPayButton() {
             console.log("Botón de pagar mostrado"); // Verifica si esta línea aparece en la consola
             document.getElementById('payButtonContainer').style.display = 'block'; // Muestra el botón de pagar
