@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger</title>
+    <title>Hamburguesa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        .menu-box {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0px auto;
-        }
+       .menu-box {
+    padding: 20px;
+    margin-top: 10px; /* espacio para el header */
+    margin-bottom: 200px; /* espacio para el footer */
+    min-height: calc(100vh - 180px); /* asegura altura mínima */
+    overflow-y: auto; /* permite desplazarse si es muy largo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* distribuye el contenido para que el botón esté abajo */
+}
+
+.menu-header {
+    margin-top: 100px; /* Ajusta según la altura del header */
+    text-align: left;
+    padding: 10px 20px;
+}
 
         .platillo-title {
             display: flex;
@@ -33,27 +41,26 @@
 
         /* Contenedor Flip Card */
         .flip-card {
-            width: 100%;
-            max-width: 400px;  /* Limita el tamaño máximo de la tarjeta */
-            height: 400px; /* Controla la altura */
-            perspective: 1000px; /* Se agrega perspectiva */
-            margin-top: 20px;
-            margin: 0 auto; /* Centra la tarjeta */
-        }
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    perspective: 1000px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-        /* Estilos para el lado de la tarjeta */
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-        }
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
 
-        /* Girar la tarjeta */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
 
         /* Cara frontal */
         .flip-card-front, .flip-card-back {
@@ -105,6 +112,31 @@
             background-color: #4CAF50;
             color: white;
         }
+        .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    border-top: 1px solid #ccc;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -141,7 +173,7 @@
             <hr class="dotted-line">
         </div>
 
-        <!-- Caja blanca con contenido -->
+      <!-- Caja blanca con contenido -->
         <div class="menu-box">
             <!-- Título y precio -->
             <div class="platillo-title">
@@ -169,7 +201,7 @@
         </div>
 
         <!-- Footer con iconos de menú -->
-        <div class="footer-bar">
+         <div class="footer-bar">
             <a href="menu.html" class="footer-btn">
                 <img src="assets/img/icono-menu.png" alt="Menú" class="footer-icon">
                 <p>Menú</p>
@@ -190,5 +222,14 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const flipCard = document.getElementById('flipCard');
+        flipCard.addEventListener('click', function () {
+            flipCard.classList.toggle('flipped');
+        });
+    });
+</script>
+
 </body>
 </html>
