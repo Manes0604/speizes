@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
        .menu-box {
-    padding: 20px;
-    margin-top: 10px; /* espacio para el header */
-    margin-bottom: 200px; /* espacio para el footer */
-    min-height: calc(100vh - 180px); /* asegura altura mínima */
-    overflow-y: auto; /* permite desplazarse si es muy largo */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* distribuye el contenido para que el botón esté abajo */
-}
+            padding: 20px;
+            margin-top: 10px; /* espacio para el header */
+            margin-bottom: 200px; /* espacio para el footer */
+            min-height: calc(100vh - 180px); /* asegura altura mínima */
+            overflow-y: auto; /* permite desplazarse si es muy largo */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* distribuye el contenido para que el botón esté abajo */
+        }
 
-.menu-header {
-    margin-top: 100px; /* Ajusta según la altura del header */
-    text-align: left;
-    padding: 10px 20px;
-}
+        .menu-header {
+            margin-top: 100px; /* Ajusta según la altura del header */
+            text-align: left;
+            padding: 10px 20px;
+        }
 
         .platillo-title {
             display: flex;
@@ -41,26 +41,25 @@
 
         /* Contenedor Flip Card */
         .flip-card {
-    width: 100%;
-    max-width: 400px;
-    height: 400px;
-    perspective: 1000px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            perspective: 1000px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
 
-.flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
 
         /* Cara frontal */
         .flip-card-front, .flip-card-back {
@@ -112,31 +111,29 @@
             background-color: #4CAF50;
             color: white;
         }
+
         .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px;
+        }
 
-.footer-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px 0;
-    border-top: 1px solid #ccc;
-}
-
-
-
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px 0;
+            border-top: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +146,7 @@
         </div>
 
         <!-- Menú lateral -->
-        <div id="menu" class="menu">
+        <div id="menu" class="menu" style="display: none;">
             <div class="menu-header-nav">
                 <span>MENU</span>
             </div>
@@ -173,7 +170,7 @@
             <hr class="dotted-line">
         </div>
 
-      <!-- Caja blanca con contenido -->
+        <!-- Caja blanca con contenido -->
         <div class="menu-box">
             <!-- Título y precio -->
             <div class="platillo-title">
@@ -182,7 +179,7 @@
             </div>
 
             <!-- Flip Card con la imagen y el texto -->
-            <div class="flip-card">
+            <div class="flip-card" id="flipCard">
                 <div class="flip-card-inner">
                     <!-- Cara frontal con la imagen -->
                     <div class="flip-card-front">
@@ -191,7 +188,6 @@
                     <!-- Cara posterior con el texto -->
                     <div class="flip-card-back">
                         Carne de res criada en Texas, pan brioche casero, lechuga, tomate, cebolla, pepinillos, tocino ahumado con madera de manzano, queso cheddar, mayonesa, alioli de chipotle.
-
                     </div>
                 </div>
             </div>
@@ -201,7 +197,7 @@
         </div>
 
         <!-- Footer con iconos de menú -->
-         <div class="footer-bar">
+        <div class="footer-bar">
             <a href="menu.html" class="footer-btn">
                 <img src="assets/img/icono-menu.png" alt="Menú" class="footer-icon">
                 <p>Menú</p>
@@ -223,13 +219,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const flipCard = document.getElementById('flipCard');
-        flipCard.addEventListener('click', function () {
-            flipCard.classList.toggle('flipped');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Toggle del menú lateral
+            document.getElementById('menu-toggle').addEventListener('click', function() {
+                const menu = document.getElementById('menu');
+                menu.style.display = (menu.style.display === 'block' ? 'none' : 'block');
+            });
+
+            // Acción del flip card
+            const flipCard = document.getElementById('flipCard');
+            flipCard.addEventListener('click', function () {
+                flipCard.classList.toggle('flipped');
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
